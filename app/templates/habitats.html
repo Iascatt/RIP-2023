@@ -14,11 +14,7 @@
     <div >
         <ul style="align-items: center;">
             {% for habitat in data.habitats %}
-                {% if data.filter.title == '' or data.filter.title == habitat.title %}
-                    {% if not data.filter.env or habitat.env in data.filter.env %}
                         {% include 'habitat_card.html' with element=habitat %}
-                    {% endif %}
-                {% endif %}
             {% empty %}
                 <li>Список пуст</li>
             {% endfor %}

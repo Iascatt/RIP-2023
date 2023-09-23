@@ -34,11 +34,8 @@ ENVS = [
 
 def GetHabitats(request, fname="", fenvs=""):
     return render(request, 'habitats.html', {'data' : {
-        'current_date': date.today(),
         'envs': ENVS,
-        'habitats': HABITATS,
-        'filter': {'title': fname,
-                   'env': fenvs}
+        'habitats': filter(lambda x: (x['title'].startswith(fname) and (x['env'] in fenvs or not fenvs)), HABITATS),
     }})
 
 def GetHabitat(request, id):

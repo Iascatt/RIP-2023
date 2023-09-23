@@ -6,22 +6,23 @@
 
 {% block content %}
 <div style="margin: 20px; display: flex;">
-    <div style="background-color:  #FFC49B;">
-        <div style="margin: 20px;">
+    <div>
+        <div style="padding: 20px; background-color:  #FFC49B; border-radius: 5px;">
         {% include 'send_text_form.html' %}
+        </div>
+    </div >
+    <div >
+        <ul style="align-items: center;">
+            {% for habitat in data.habitats %}
+                {% if data.filter.title == '' or data.filter.title == habitat.title %}
+                    {% if not data.filter.env or habitat.env in data.filter.env %}
+                        {% include 'habitat_card.html' with element=habitat %}
+                    {% endif %}
+                {% endif %}
+            {% empty %}
+                <li>Список пуст</li>
+            {% endfor %}
+        </ul>
     </div>
-    </div>
-    <p>Фильтр: {{ data.filter.env }}</p>
-    <ul>
-        {% for habitat in data.habitats %}
-            {% if data.filter.title == '' or data.filter.title == habitat.title %}
-            {% if not data.filter.env or habitat.env in data.filter.env %}
-                {% include 'habitat_card.html' with element=habitat %}
-            {% endif %}
-            {% endif %}
-        {% empty %}
-            <li>Список пуст</li>
-        {% endfor %}
-    </ul>
 </div>
 {% endblock %}

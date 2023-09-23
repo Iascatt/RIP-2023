@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.GetHabitats),
     path('habitat/<int:id>/', views.GetHabitat, name='habitat_url'),
-    path('sendText', views.sendText, name='sendText'),
+    path('filter', views.GetFilter, name='filter'),
 ]

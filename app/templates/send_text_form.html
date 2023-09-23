@@ -1,5 +1,17 @@
-<form action="sendText" method="post" enctype="multipart/form-data">
+<form action="filter" method="get" enctype="multipart/form-data">
     {% csrf_token %}
+    <p  style="font: 14px sans-serif;">Назвние места обитания:</p>
     <input name="text" type="text"><br><br>
-    <input type="submit" value="Submit" >
+    <p style="font: 14px sans-serif;"></p>
+    <fieldset>
+        <legend>Тип среды:</legend>
+        {% for env in data.envs %}
+            {% include 'checkbox_el.html' with element=env %}
+        {% empty %}
+            <li>Список пуст</li>
+        {% endfor %}
+      
+      </fieldset>
+      <br><br>
+    <input type="submit" value="ОК" >
 </form>

@@ -1,11 +1,21 @@
+{% load static %}
 <!doctype html>
 <html lang="en" class="h-100">
 <head>
   <meta charset="utf-8">
     <title>{% block title %}{% endblock %}</title>
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
 </head>
 <body>
-    Hello BMSTU students!
+    <header>
+      <div style="margin-left: 20px; display: flex;">
+        <div  style="height: 40px; margin-right: 10px;">
+          <img src="https://cdn-icons-png.flaticon.com/128/672/672716.png"
+          alt="main icon">
+        </div>
+        <div>Регистрация новых видов животных</div>
+      </div>
+    </header>
     {% block content %}{% endblock %}
 </body>
 </html>

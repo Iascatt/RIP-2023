@@ -1,0 +1,9 @@
+{% load static %}
+
+<div class="card">
+    <img src="{{ element.pic }}"
+     alt="habitat img">
+    <div class="container">
+        <a class="title" href="{% url 'habitat_url' element.id %}">{{ element.title }}</a>
+    </div>
+  </div>

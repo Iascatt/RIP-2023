@@ -14,7 +14,11 @@
     <div >
         <ul style="align-items: center;">
             {% for habitat in data.habitats %}
-                        {% include 'habitat_card.html' with element=habitat %}
+                {% for env in data.envs %}
+                    {% if env.id|stringformat:"i" == habitat.env %}
+                        {% include 'habitat_card.html' with element=habitat env_icon=env.pic %}
+                    {% endif %}
+                {% endfor %}
             {% empty %}
                 <li>Список пуст</li>
             {% endfor %}

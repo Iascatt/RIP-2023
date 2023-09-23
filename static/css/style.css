@@ -1,6 +1,8 @@
 body {
   background-color: #FFEFD3;
 margin: 0;
+font-family: sans-serif;
+color: #001B2E;;
 }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -35,3 +37,10 @@ text-decoration: none;
 margin: 5px;
 line-height: 50px;
 }
+
+button {
+  border-radius: 5px;
+  color: #ADB6C4;
+  font: sans-serif;
+}
+

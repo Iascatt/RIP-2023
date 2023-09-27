@@ -14,7 +14,7 @@
             <button  onclick="history.back()">Назад</button>
         </div>
         <div  style="width: 40%; margin: 5%;">
-            <img src="{{ data.habitat.pic }}"> 
+            <img src="{% static element.image.url %}" alt="habitat img"> 
         </div>
     </div>
 {% endblock %}

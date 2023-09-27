@@ -1,10 +1,12 @@
 {% load static %}
 
 <div class="card">
-    <img src="{{ element.pic }}"
-     alt="habitat img">
+    <img src="{{ element.image.url }}" alt="habitat img">
     <div class="container" style="display: flex; align-items: center;">
         <a class="title" href="{% url 'habitat_url' element.id %}">{{ element.title }}</a>
-        <img src="{{ env_icon }}" style="width: 30px; align-self:center;">
+        <form action="{% url 'del_hab' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" name="id" value="{{ element.id }}" style="border-radius: 5px; font: sans-serif;">Удалить</button>
+        </form>
     </div>
   </div>

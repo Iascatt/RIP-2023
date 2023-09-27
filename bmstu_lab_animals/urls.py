@@ -18,10 +18,13 @@ from django.contrib import admin
 from django.urls import path
 
 from app import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.GetHabitats),
+    path('filter', views.GetHabitats, name='filter'),
     path('habitat/<int:id>/', views.GetHabitat, name='habitat_url'),
-    path('filter', views.GetFilter, name='filter'),
-]
+    path('del_hab', views.DeleteHabitat, name='del_hab'),
+] + static(settings.STATIC_URL, document_root=settings.STATIC_URL)

@@ -5,14 +5,23 @@
     <p style="font: 14px sans-serif;"></p>
     <fieldset>
         <legend style="font: sans-serif;">Тип среды:</legend>
-        {% for env in data.envs %}
-            {% include 'checkbox_el.html' with element=env %}
+        {% for element in data.envs %}
+            {% include 'checkbox_el.html' with name="env" %}
+        {% empty %}
+            <li>Список пуст</li>
+        {% endfor %}
+      
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend style="font: sans-serif;">Происхождение:</legend>
+        {% for element in data.origs %}
+            {% include 'checkbox_el.html' with name="orig" %}
         {% empty %}
             <li>Список пуст</li>
         {% endfor %}
       
       </fieldset>
       <br><br>
-    <input type="submit" value="ОК" style="border-radius: 5px;
-    font: sans-serif;">
+    <input type="submit" value="ОК" style="border-radius: 5px; font: sans-serif;">
 </form>

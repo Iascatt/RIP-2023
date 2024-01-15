@@ -9,12 +9,21 @@
         <div style="width: 40%; margin: 5%;">
             <p style=" font: 18px sans-serif;">Подробная информация о месте обитания: {{ data.habitat.title }}</p>
             <p style=" font: 14px sans-serif;">{{ data.habitat.desc }}</p>
-            <p style=" font: 16px sans-serif;">Происхождение места обитания: {{ data.habitat.origin }}</p>
-            <p style=" font: 16px sans-serif;">Среда: {{ data.env.title }}</p>
+            {% for orig in data.origs %}
+            {% if orig == data.habitat.origin %}
+            <p style=" font: 16px sans-serif;">Происхождение: {{ orig.label }}</p>
+            {% endif %}
+            {% endfor %}
+            
+            {% for env in data.envs %}
+            {% if env == data.habitat.env %}
+            <p style=" font: 16px sans-serif;">Среда: {{ env.label }}</p>
+            {% endif %}
+            {% endfor %}
             <button  onclick="history.back()">Назад</button>
         </div>
         <div  style="width: 40%; margin: 5%;">
-            <img src="{% static element.image.url %}" alt="habitat img"> 
+            <img src="{% static data.habitat.image %}" alt="habitat img"> 
         </div>
     </div>
 {% endblock %}

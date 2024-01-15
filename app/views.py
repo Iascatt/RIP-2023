@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from datetime import date
 from app.models import Habitat
+import psycopg2
 
 def GetHabitats(request):
     ftitle = request.GET.get("text", "")
@@ -22,16 +23,16 @@ def GetHabitat(request, id):
     hab = Habitat.objects.get(id=id)
     return render(request, 'habitat.html', {'data' : {
         'habitat': hab,
-        'id': id
+        'envs': Habitat.Environment,
+        'origs': Habitat.Origin,
     }})
 
 def DeleteHabitat(request):
     id = request.POST['id']
-    import psycopg2
-    conn = psycopg2.connect(dbname="animals_db", host="192.168.67.78", user="student", password="root", port="5432")
+    conn = psycopg2.connect(dbname="animals_db", host="192.168.1.51", user="student", password="root", port="5432")
     cursor = conn.cursor()
     cursor.execute(f"UPDATE app_habitat SET status='D' WHERE id={id}")
     conn.commit()   # реальное выполнение команд sql1
     cursor.close()
     conn.close()
-    return GetHabitats(request)
+    return redirect('/')

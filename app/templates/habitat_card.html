@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="card">
-    <img src="{% static element.image.url %}" alt="habitat img">
+    <img src="{% static element.image %}" alt="habitat img">
     <div class="container" style="display: flex; align-items: center;">
         <a class="title" href="{% url 'habitat_url' element.id %}">{{ element.title }}</a>
         <form action="{% url 'del_hab' %}" method="post">
